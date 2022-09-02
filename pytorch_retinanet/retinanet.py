@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from fpn import FPN50
+from pytorch_retinanet.fpn import FPN50
 from torch.autograd import Variable
 
 
