@@ -116,7 +116,7 @@ else:
         if engine.state.epoch % 100 == 1:
             data_set = validate_retinanet.prepare_data(ctx.params.data.val_list_file_names)
             for key, data_list in data_set.items():
-                acc_res = validate_retinanet.evaluate_accuracy(os.path.join(ctx.params.get_base_filename(), 'param.txt'),
+                acc_res = validate_retinanet.evaluate_accuracy(os.path.join(ctx.params.get_base_filename() + ".param.txt"),
                                                                model, settings.device, data_list)
                 for rk, rv in acc_res.items():
                     engine.state.metrics[key+ ':' + rk] = rv
