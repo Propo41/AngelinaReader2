@@ -284,6 +284,7 @@ interpret_line_funcs = {
     'RU': interpret_line_RU,
     'EN': interpret_line_RU, # TODO in can work with some errors for EN
     'EN2': interpret_line_liblouis,
+    'BN': interpret_line_liblouis,
     'DE': interpret_line_RU, # TODO in can work with some errors for DE
     'GR': interpret_line_RU,
     'LV': interpret_line_RU,
@@ -388,7 +389,7 @@ def string_to_line(text_line):
     return line
 
 
-def text_to_lines(text, lang = 'RU'):
+def text_to_lines(text, lang = 'BN'):
     '''
     :param text: multiline text
     :return: list of Line

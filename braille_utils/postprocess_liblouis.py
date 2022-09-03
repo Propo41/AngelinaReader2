@@ -95,10 +95,11 @@ def interpret_line_liblouis(line, lang, mode = None):
 
 if __name__=="__main__":
     from data_utils import data as data
-    import postprocess
+    from braille_utils import postprocess
+    from pathlib import Path
 
-    lang = 'EN2'
-    json_filename = r"DSBI\data\test\IMG_20190715_121011.labeled.json"
+    lang = 'BN'
+    json_filename = Path("DSBI/data/test/IMG_20190715_121011.labeled.json")
 
     # for performance test
     liblouis_table = liblouis_tables.get(lang)
@@ -107,11 +108,13 @@ if __name__=="__main__":
     rects = data.read_LabelMe_annotation(label_filename = json_filename, get_points = False)
     boxes = [r[:4] for r in rects]
     labels = [r[4] for r in rects]
-    lines = postprocess.boxes_to_lines(boxes, labels, lang='EN')
+    lines = postprocess.boxes_to_lines(boxes, labels, lang='BN')
     for i in range(1000):
         for ln in lines:
             interpret_line_liblouis(ln, lang, None)
             interpret_line_liblouis_word_by_word(ln, liblouis_tables_list, None)
             postprocess.interpret_line_RU(ln, lang, None)
     print("Done")
+    str = postprocess.lines_to_text(lines)
+    print(str)
 
