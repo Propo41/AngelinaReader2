@@ -9,6 +9,7 @@ from braille_utils import label_tools as lt
 liblouis_tables_path_prefix = getattr(local_config, 'liblouis_tables_path_prefix', '')
 liblouis_tables = {
     "EN2": "en-ueb-g2.ctb",
+    "BN": "be-in-g1.utb",
 }
 
 def update_word_at_line(line, start_idx, end_idx, liblouis_word, existing_word):
@@ -97,7 +98,7 @@ if __name__=="__main__":
     import postprocess
 
     lang = 'EN2'
-    json_filename = r"D:\Programming.Data\Braille\Книги на английском от Оксаны распознанные\v3\IMG_20210827_161627.labeled.json"
+    json_filename = r"DSBI\data\test\IMG_20190715_121011.labeled.json"
 
     # for performance test
     liblouis_table = liblouis_tables.get(lang)

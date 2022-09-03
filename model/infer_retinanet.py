@@ -499,6 +499,10 @@ class BrailleInference:
         result_dict = self.run(img, lang=lang, draw_refined=draw_refined,
                                find_orientation=find_orientation,
                                process_2_sides=process_2_sides, align_results=align_results, repeat_on_aligned=repeat_on_aligned)
+        
+        print("text: ", result_dict['text'])
+        print("braille: ", result_dict['braille'])
+
         if result_dict is None:
             return None
         if self.verbose >= 2:
