@@ -4,7 +4,7 @@ import glob
 import sys
 sys.path.insert(1, '..')
 import braille_utils.postprocess as postprocess
-import train.data as data
+from data_utils import data as data
 
 
 def annonation_to_text(json_filename, lang):
@@ -28,13 +28,15 @@ def process_json_annotation(json_filename, lang='RU'):
 if __name__ == "__main__":
     parcer = argparse.ArgumentParser()
     parcer.add_argument('file')
+    parcer.add_argument('lang')
     args = parcer.parse_args()
     print(args.file)
+    print(args.lang)
     if os.path.isfile(args.file) and args.file.lower().endswith('.json'):
-        process_json_annotation(args.file)
+        process_json_annotation(args.file, args.lang)
     elif os.path.isdir(args.file):
         files = glob.glob(os.path.join(args.file, '*.json'))
         for fn in files:
-            process_json_annotation(fn)
+            process_json_annotation(fn, args.lang)
     else:
         raise Exception('incorrect argument: ' + args.file)
